@@ -1,6 +1,6 @@
 ## Neighborhood Map project
 
-Part 1 of fifth project from the Front-End Web Developer Nanodegree in <a href="https://www.udacity.com" target="_blank">Udacity</a>: 
+Part 1 of the fifth project from the Front-End Web Developer Nanodegree in <a href="https://www.udacity.com" target="_blank">Udacity</a>: 
 <br>
 developing a single-page application featuring a map of a neighborhood, adding additional functionality to this application.
 
