@@ -38,7 +38,7 @@ function toggleBounce() {
 function ViewModel() {
     var self = this;
 
-    self.locations = ko.observableArray([]);
+    this.locations = ko.observableArray([]);
 
     for (var i = 0; i < placesListLength; i++) {
         self.locations.push(places[i]);
@@ -46,6 +46,11 @@ function ViewModel() {
     }
 
     console.log(self.locations);
+    
+    this.toggleMarker = function() {
+        console.log('hi');
+        // aquí posarem el toggle per fer que es vergi nomes el marker aquest 
+    };
 
     // aquí dins només lo estricte de knowckout
     // tot el mapa fora 
