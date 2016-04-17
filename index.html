@@ -1,71 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Neighbourhood Map Project</title>
-    
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: Tahoma, sans-serif;
-            font-size: 14px;
-        }
-        #map {
-            height: 100%;
-            width: calc(100% - 300px);
-        }
-        .sidebar {
-            width: 300px;
-            height: 100%;
-            background-color: olive;
-            position: fixed;
-            right: 0;
-        }
-        .search-text {
-            margin: 20px 0 20px 20px;
-            padding: 8px 10px;
-            border-radius: 4px 0 0 4px;
-            border: none;
-            float: left;
-        }
-        .search-button {
-            background-color: brown;
-            color: #fff;
-            margin: 20px 20px 20px 0;
-            padding: 8px 12px;
-            border-radius: 0 4px 4px 0;
-            border: none;
-            float: left;
-        }
-
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 
-<body>  
+<body>
     <div class="sidebar">
-        <form data-bind="submit: searchSubmit">
-            <input class="search-text" data-bind="value: searchWord, valueUpdate: 'afterkeydown', event: {keyup:searchSubmit}" placeholder="Where do you want to go?">
+        <form data-bind="">
+            <input class="search-text" data-bind="" placeholder="What do you want?">
             <button class="search-button" type="submit">Search</button>
         </form>
-        <div style="clear: both"></div>
-        <ul class="result-list" data-bind="foreach: markers">
-            <li class="result-item" data-bind="visible: listVisible, click: $parent.setActiveLocation">
-                <h1 data-bind="text: name"></h1>
-                <p data-bind="text: address"></p>
-                <p data-bind="text: phone"></p>
+        <div class="clearfix"></div>
+        <ul class="places-list" data-bind="foreach: locations">
+            <li class="places-item" data-bind="click: $parent.toggleMarker">
+                <img class="foto" src="http://placehold.it/200x200" alt="Messie Pizza">
+                <i data-bind="attr: { class: icon }"></i>
+                <span class="tag" data-bind="text: category"></span>
+                <h3 class="name" data-bind="html: name"></h3>
+                <p class="address" data-bind="text: address"></p>
+                <a class="link" target="_blank" data-bind="attr: { href: web, title: name }">Visit website</a>
             </li>
         </ul>
     </div>
-    
+
     <div id="map"></div>
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAehhDeCoHVsZYrNpNB8Jl0GVX0GZGATho&callback=initMap"></script>
-    <script src="js/libs/jquery-2.2.0.min.js"></script>
+
     <script src="js/libs/knockout-3.4.0.min.js"></script>
+    <script src="js/locations.js"></script>
     <script src="js/app.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAehhDeCoHVsZYrNpNB8Jl0GVX0GZGATho&callback=initMap"></script>
 </body>
+
 </html>
