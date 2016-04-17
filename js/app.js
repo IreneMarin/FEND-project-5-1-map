@@ -1,31 +1,28 @@
 // Create variables used in the app
 var map;
+var query;
+var search = function(){};
 var placesListLength = places.length;
 
+// Function to initialize Google Maps 
 function initMap() {
-
-    // Initialize Google Maps
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 41.4029277, lng: 2.157448 },
         zoom: 16
     });
 
     // Put list of places in the map
-    for (var i = 0; i < placesListLength; i++) {
-        var place = places[i];
+    for (var i = 0; i < placesListLength; i++) {        
         var marker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             map: map,
             position: new google.maps.LatLng(places[i].latitude, places[i].longitude),
             name: places[i].name
         });
-        place.marker = marker;
     }
-
-
-
 }
 
+// Function to toggle the map markers
 function toggleBounce() {
     if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
@@ -34,30 +31,26 @@ function toggleBounce() {
     }
 }
 
-
+// ViewModel Knockout
 function ViewModel() {
     var self = this;
 
-    this.locations = ko.observableArray([]);
+    // Put all the places in the list by default
+    self.places = ko.observableArray([]);
 
     for (var i = 0; i < placesListLength; i++) {
-        self.locations.push(places[i]);
-        console.log(places[i]);
+        self.places.push(places[i]);        
     }
-
-    console.log(self.locations);
-    
+   
     this.toggleMarker = function() {
         console.log('hi');
         // aquí posarem el toggle per fer que es vergi nomes el marker aquest 
-    };
-
-    // aquí dins només lo estricte de knowckout
-    // tot el mapa fora 
-
-
+    };     
 }
+
 ko.applyBindings(new ViewModel());
+
+
 
 /*
 var ViewModel = function() {
@@ -117,19 +110,4 @@ var ViewModel = function() {
 }
 ko.applyBindings(new ViewModel());
 
-*/
-
-
-/*
-var ViewModel = function() {
-    this.clickCount = ko.observable(0);
-    this.name = ko.observable('Taby');
-    this.imgSrc = ko.observable('img/xxxx.jpg');
-    
-    this.incrementCounter = function() {
-        this.clickCount(this.clickCount() + 1);
-    };
-}
-
-ko.applyBindings (new ViewModel());
 */

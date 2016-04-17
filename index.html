@@ -11,19 +11,15 @@
 
 <body>
     <div class="sidebar">
-        <form data-bind="">
-            <input class="search-text" data-bind="" placeholder="What do you want?">
-            <button class="search-button" type="submit">Search</button>
-        </form>
-        <div class="clearfix"></div>
-        <ul class="places-list" data-bind="foreach: locations">
-            <li class="places-item" data-bind="click: $parent.toggleMarker">
-                <img class="foto" src="http://placehold.it/200x200" alt="Messie Pizza">
+        <input class="search" data-bind="value: query, valueUpdate: 'keyup'" type="search" placeholder="Where do you want to go?">
+        <ul class="list" data-bind="foreach: places">
+            <li class="item" data-bind="click: $parent.toggleMarker">
+                <!--<img class="foto" data-bind="attr: { src: photo, alt: name }">-->
                 <i data-bind="attr: { class: icon }"></i>
-                <span class="tag" data-bind="text: category"></span>
-                <h3 class="name" data-bind="html: name"></h3>
+                <span class="category" data-bind="text: category"></span>
+                <h3 class="name" data-bind="text: name"></h3>
                 <p class="address" data-bind="text: address"></p>
-                <a class="link" target="_blank" data-bind="attr: { href: web, title: name }">Visit website</a>
+                <a class="link" data-bind="attr: { href: web, title: name }" target="_blank">Visit website</a>
             </li>
         </ul>
     </div>
@@ -31,7 +27,7 @@
     <div id="map"></div>
 
     <script src="js/libs/knockout-3.4.0.min.js"></script>
-    <script src="js/locations.js"></script>
+    <script src="js/places.js"></script>
     <script src="js/app.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAehhDeCoHVsZYrNpNB8Jl0GVX0GZGATho&callback=initMap"></script>
 </body>

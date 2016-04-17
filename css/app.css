@@ -2,7 +2,6 @@ html,
 body {
     height: 100%;
     margin: 0;
-    padding: 0;
     font-family: Tahoma, sans-serif;
     font-size: 14px;
     color: #333;
@@ -23,70 +22,48 @@ body {
     overflow: scroll;
 }
 
-.search-text {
-    width: 63%;
-    float: left;
+.search {
+    width: 100%;    
     padding: 10px;
-    border-radius: 4px 0 0 4px;
+    border-radius: 4px;
     border: none;
     font-size: 14px;
     box-shadow: 2px 2px 2px #6f150c;
 }
 
-.search-button {
-    width: 30%;
-    float: left;
-    background-color: #C0392B;
-    color: #ECF0F1;
-    padding: 10px;
-    border-radius: 0 4px 4px 0;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    box-shadow: 2px 2px 2px #6f150c;
-}
-
-.search-button:hover {
-    background-color: #333;
-}
-
-.clearfix {
-    clear: both;
-}
-
-.places-list {
-    padding: 20px 0;
+.list {
+    padding: 0;
     list-style: none;
 }
 
-.places-item {
+.item {
     background: #f49288;
     padding: 10px;
     box-shadow: 2px 2px 2px #6f150c;
     height: 100px;
-    margin-bottom: 10px;
+    margin: 20px 0 0 0;
 }
 
-.places-item:hover {
+.item:hover {
     background: #C0392B;
     cursor: pointer;
 }
 
-    .places-item .foto {
+    .foto {
         width: 100px;
         height: 100px;
         float: left;
         padding: 0 10px 0 0;
     }
     
-    .places-item .name {
+    .name {
         font-size: 14px;
         text-transform: uppercase;
         margin: 5px 0;
     }
     
-    .places-item .tag,
-    .places-item .fa {
+    .category,
+    .fa {
         margin: 0;
         color: #6f150c;
         font-size: 11px;
@@ -94,20 +71,20 @@ body {
         text-transform: uppercase;
     }
     
-    .places-item .fa {
+    .fa {
         font-size: 12px;
     }
             
-    .places-item .address {
+    .address {
         margin: 0 0 5px 0;
     }
     
-    .places-item .link {
+    .link {
         color: #333;
         text-decoration: none;
     }
     
-    .places-item .link:hover {
+    .link:hover {
         text-decoration: underline;
     }
 
@@ -120,25 +97,25 @@ body {
         width: 200px;
     }
     
-    .search-text {
+    .search {
         padding: 10px 0 10px 10px;
     }
         
-    .places-item {
+    .item {
         height: auto;
     }
     
-        .places-item .foto {
+        .foto {
             width: 70px;
             height: 70px;
             padding: 0 5px 5px 0;
         }
         
-        .places-item .name {
+        .name {
             margin: 5px 0;
         }
         
-        .places-item .address {
+        .address {
             clear: both;
         }
 }
@@ -157,29 +134,25 @@ body {
         left: 0;
     }
     
-    .search-text {
+    .search {
         width: 30%;
         padding: 10px 0 10px 10px;
     }
-    
-    .search-button {
-        width: 15%;
-    }
-    
-    .places-list {
+            
+    .list {
         padding: 10px 0;
     }
 
-    .places-item {
+    .item {
         display: inline-block;
         margin-right: 10px;
     }
     
-        .places-item .foto {
+        .foto {
             display: none;
         }
         
-        .places-item .name {
+        .name {
             margin: 0;
         }
 }
@@ -198,31 +171,27 @@ body {
         left: 0;
     }
     
-    .search-text {
+    .search {
         width: 55%;
         padding: 10px 0 10px 10px;
     }
-    
-    .search-button {
-        width: 30%;
-    }
-    
-    .places-list {
+        
+    .list {
         padding: 0;
     }
 
-    .places-item {
+    .item {
         display: inline-block;
         margin-right: 10px;
         width: 30%;
         font-size: 13px;
     }
     
-    .places-item .name {
+    .name {
         font-size: 13px;
     }
     
-    .places-item .link {
+    .link {
         display: none;
     }
 }
