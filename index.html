@@ -12,6 +12,14 @@
 <body>
     <div class="sidebar">
         <input class="search" data-bind="value: query, valueUpdate: 'keyup'" type="search" placeholder="Where do you want to go?">
+        <div class="filters">   
+            <a href="#"><i class="fa fa-cutlery"></i></a>
+            <a href="#"><i class="fa fa-beer"></i></a>
+            <a href="#"><i class="fa fa-coffee"></i></a>
+            <a href="#"><i class="fa fa-book"></i></a>
+            <a href="#"><i class="fa fa-gamepad"></i></a>
+            <a href="#"><i class="fa fa-video-camera"></i></a>
+        </div>
         <ul class="list" data-bind="foreach: places">
             <li class="item" data-bind="click: $parent.toggleMarker">
                 <!--<img class="foto" data-bind="attr: { src: photo, alt: name }">-->

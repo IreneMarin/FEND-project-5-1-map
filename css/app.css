@@ -74,6 +74,19 @@ body {
     .fa {
         font-size: 12px;
     }
+    
+    .filters {
+        padding: 10px 0 0 20px;
+    }
+    
+    .filters .fa {
+        font-size: 20px;
+        padding: 5px 10px;
+    }
+    
+    .filters .fa:hover {
+        color: #333;
+    }
             
     .address {
         margin: 0 0 5px 0;
@@ -88,7 +101,7 @@ body {
         text-decoration: underline;
     }
 
-@media screen and (max-width: 1279px) {
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
     #map {
         width: calc(100% - 240px);
     }
@@ -120,10 +133,11 @@ body {
         }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
     #map {
         height: calc(100% - 150px);
         width: 100%;
+        top: 150px;
     }
     
     .sidebar {
@@ -140,12 +154,14 @@ body {
     }
             
     .list {
-        padding: 10px 0;
+        padding: 0;
+        margin: 0;
     }
 
     .item {
         display: inline-block;
-        margin-right: 10px;
+        margin: 10px 10px 0 0;
+        width: 150px;
     }
     
         .foto {
