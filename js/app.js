@@ -1,8 +1,8 @@
 // Create variables used in the app
-var map;
-var query;
-var search = function(){};
+var map, marker, query, infowindow, contentString;
+var search = function () { };
 var placesListLength = places.length;
+var markers = [];
 
 // Function to initialize Google Maps 
 function initMap() {
@@ -11,117 +11,101 @@ function initMap() {
         zoom: 17
     });
 
+
+    contentString = '<div id="content">' +
+        '<div id="siteNotice">' +
+        '</div>' +
+        '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+        '<div id="bodyContent">' +
+        '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+        'sandstone rock formation in the southern part of the ' +
+        'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
+        'south west of the nearest large town, Alice Springs; 450&#160;km ' +
+        '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
+        'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
+        'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
+        'Aboriginal people of the area. It has many springs, waterholes, ' +
+        'rock caves and ancient paintings. Uluru is listed as a World ' +
+        'Heritage Site.</p>' +
+        '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+        'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
+        '(last visited June 22, 2009).</p>' +
+        '</div>' +
+        '</div>';
+
+    infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
     // Put list of places in the map
-    /*for (var i = 0; i < placesListLength; i++) {        
-        var marker = new google.maps.Marker({
+    for (var i = 0; i < placesListLength; i++) {
+        marker = new google.maps.Marker({
             animation: google.maps.Animation.DROP,
             map: map,
             position: new google.maps.LatLng(places[i].latitude, places[i].longitude),
             name: places[i].name
         });
-    }*/
+        //markers.push(marker);
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+        });
+    }
 }
 
 // Function to toggle the map markers
-/*
 function toggleBounce() {
     if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
     } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
     }
-}*/
+}
 
 
 
 var viewModel = {
-  
-  // Put all the places in the list by default
-  places: ko.observableArray(places.slice(0)),
-  
-  // Observable for the search. Empty because we haven't searched anything yet
-  query: ko.observable(''),
-  
-  search: function(value) {
-    // Remove all the current places, which removes them from the view
-    viewModel.places.removeAll();
 
-    for(var i = 0; i < placesListLength; i++) {
-      if (places[i].name.toLowerCase().indexOf(value.toLowerCase()) >= 0 
-      || places[i].category.toLowerCase().indexOf(value.toLowerCase()) >= 0)  {
-        viewModel.places.push(places[i]);
-      }
+    // Put all the places in the list by default
+    // If we put (places) instead of (places.slice(0)), when we removeAll 
+    // we will actually delete everything in the array... 
+    places: ko.observableArray(places.slice(0)),
+
+
+
+    // Observable for the search. Empty because we haven't searched anything yet
+    query: ko.observable(''),
+
+    search: function (value) {
+        // Remove all the current places, which removes them from the view
+        viewModel.places.removeAll();
+
+        // Go through all the places. If the name or the category matches the one
+        // in the search, push the place to the visible array
+        for (var i = 0; i < placesListLength; i++) {
+            if (places[i].name.toLowerCase().indexOf(value.toLowerCase()) >= 0
+                || places[i].category.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+                viewModel.places.push(places[i]);
+            }
+        }
+
+/*
+        for (var i = 0; i < markers.length; i++) {
+            // Take away all the markers:
+            markers[i].setVisible(false);
+            // Put back some:
+            if (markers[i].name.toLowerCase().indexOf(self.query().toLowerCase()) >= 0) {
+                markers[i].setVisible(true);
+            }
+        }*/
+
     }
-  }
-  
+
 };
 
 viewModel.query.subscribe(viewModel.search);
 
 ko.applyBindings(viewModel);
 
-
-
-
-
-/*
-// ViewModel Knockout
-function ViewModel() {
-    var self = this;
-
-    // Put all the places in the list by default
-    self.places = ko.observableArray([]);
-    
-    self.places = ko.observableArray(places)
-
-    for (var i = 0; i < placesListLength; i++) {
-        self.places.push(places[i]);        
-    }
-   
-    this.toggleMarker = function() {
-        console.log('hi');
-        // aquí posarem el toggle per fer que es vergi nomes el marker aquest 
-    };     
-    
-    
-    
-    // Observable for the search. Empty because we haven't searched anything by default
-    self.query = ko.observable(''); 
-
-    self.search = function(value) {
-        // remove all the current beers, which removes them from the view
-        viewModel.places.removeAll();
-
-        for(var x in places) {
-            if(places[x].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
-                self.places.push(places[x]);
-            }
-        }
-    }
-    
-    
-    self.results = ko.computed(function () {
-        return ko.utils.arrayFilter(self.places(), function (list) {
-            //Match search with items in sortedLocations() observable array
-            var listFilter = list.name.toLowerCase().indexOf(self.query().toLowerCase()) >= 0;
-            if (listFilter) { //if user input matches any of the brewery names, show only the matches
-                toggleMarker.marker.setVisible(true);
-            } else {
-                toggleMarker.marker.setVisible(false); //hide markers and list items that do not match results
-            }
-
-            return listFilter;
-
-        });
-    });
-   
-    
-}
-
-viewModel.query.subscribe(viewModel.search);
-
-ko.applyBindings(new ViewModel());
-*/
 
 
 /*
