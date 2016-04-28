@@ -4,6 +4,13 @@ Part 1 of the fifth project from the Front-End Web Developer Nanodegree in <a hr
 <br>
 developing a single-page application featuring a map of a neighborhood, adding additional functionality to this application.
 
+-------------------
+
+### Attributions
+
+[Live search with knockout.js](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/)
+
+[KnockoutJS and Google Maps binding](http://www.hoonzis.com/knockoutjs-and-google-maps-binding/)
 
 -----------------------------
 
