@@ -18,3 +18,9 @@ You will develop a single page application featuring a map of your neighborhood 
 5. Implement the search bar functionality to search and filter your map markers. There should be a filtering function on markers that already show up. Simply providing a search function through a third-party API is not enough.
 6. Implement a list view of the identified locations.
 7. Add additional functionality using third-party APIs when a map marker, search result, or list view entry is clicked (ex. Yelp reviews, Wikipedia, Flickr images, etc). If you need a refresher on making AJAX requests to third-party servers, check out our Intro to AJAX course.
+
+---------------------
+
+### License
+
+The project is licensed under the [MIT license](license.txt).
