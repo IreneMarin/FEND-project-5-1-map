@@ -8,9 +8,13 @@ developing a single-page application featuring a map of a neighborhood, adding a
 
 ### Attributions
 
+I have used different resources to help me through this project: 
+
 [Live search with knockout.js](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/)
 
 [KnockoutJS and Google Maps binding](http://www.hoonzis.com/knockoutjs-and-google-maps-binding/)
+
+And the Udacity Discussion Forums, where some of the most useful posts have been: 
 
 -----------------------------
 
