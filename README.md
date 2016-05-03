@@ -8,7 +8,9 @@ developing a single-page application featuring a map of a neighborhood, adding a
 
 ### Attributions
 
-I have used different resources to help me through this project: 
+For this project, I have used the Knockout JS framework, the Google Maps API and the Yelp API.
+
+To help me get through it, I have used different resources, like: 
 
 [Live search with knockout.js](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/)
 
@@ -16,8 +18,7 @@ I have used different resources to help me through this project:
 
 [Example of a live search with KO](https://jsfiddle.net/2q8Gn/)
 
-And the Udacity Discussion Forums, where some of the most useful posts have been: 
-- [Filtering Google Maps markers with list view](https://discussions.udacity.com/t/filtering-google-maps-markers-with-list-view/34660)
+And the Udacity Discussion Forums.
 
 -----------------------------
 
