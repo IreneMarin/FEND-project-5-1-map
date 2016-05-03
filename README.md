@@ -8,7 +8,7 @@ developing a single-page application featuring a map of a neighborhood, adding a
 
 ### Attributions
 
-For this project, I have used the Knockout JS framework, the Google Maps API and the Yelp API.
+For this project, I have used the [Knockout JS framework][http://knockoutjs.com/], the [Google Maps API](https://developers.google.com/maps/) and the [Yelp API](https://www.yelp.com/developers/documentation/v2/overview).
 
 To help me get through it, I have used different resources, like: 
 
