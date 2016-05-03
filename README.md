@@ -17,6 +17,7 @@ I have used different resources to help me through this project:
 [Example of a live search with KO](https://jsfiddle.net/2q8Gn/)
 
 And the Udacity Discussion Forums, where some of the most useful posts have been: 
+- [Filtering Google Maps markers with list view](https://discussions.udacity.com/t/filtering-google-maps-markers-with-list-view/34660)
 
 -----------------------------
 
