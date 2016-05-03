@@ -14,6 +14,8 @@ I have used different resources to help me through this project:
 
 [KnockoutJS and Google Maps binding](http://www.hoonzis.com/knockoutjs-and-google-maps-binding/)
 
+[Example of a live search with KO](https://jsfiddle.net/2q8Gn/)
+
 And the Udacity Discussion Forums, where some of the most useful posts have been: 
 
 -----------------------------
