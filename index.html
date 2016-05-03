@@ -22,7 +22,7 @@
             <a href="#"><i class="fa fa-video-camera"></i></a>
         </div>
         <ul class="list" data-bind="foreach: filteredPlaces">
-            <li class="item" data-bind="">
+            <li class="item" data-bind="click: $parent.list">
                 <!--<img class="foto" data-bind="attr: { src: photo, alt: name }">-->
                 <i data-bind="attr: { class: icon }"></i>
                 <span class="category" data-bind="text: category"></span>

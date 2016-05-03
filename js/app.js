@@ -18,14 +18,6 @@ var Place = function (data) {
     this.marker = null;
 };
 
-// Create a function to toggle the marker, when we click into it or into the list
-var toggleMarker = function () {
-    if (marker.getAnimation() !== null) {
-        marker.setAnimation(null);
-    } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
-};
 
 // Create a function for the infoWindow
 
@@ -54,9 +46,28 @@ var ViewModel = function () {
             animation: google.maps.Animation.DROP
         });
 
-        // Add listeners onto the marker, such as "click" listeners.
+        // Add listener onto the marker, to bounce the marker when clicked
+        place.marker.addListener('click', toggleMarker);
+
+        // Create a function to bounce the marker, when we click into it or into the list
+        function toggleMarker() {
+            if (place.marker.getAnimation() !== null) {
+                place.marker.setAnimation(null);
+            } else {
+                place.marker.setAnimation(google.maps.Animation.BOUNCE);
+                setTimeout(function () {
+                    place.marker.setAnimation(null);
+                }, 2000);
+            }
+        }
 
     });
+    
+    // In the HTML, we have put the click databind in the <li> so that, when clicked, this will initiate
+    // We trigger the bounce in the map marker
+    self.list = function (place, marker) {
+        google.maps.event.trigger(place.marker, 'click'); 
+    };
 
     // Places that should be visible, based on user input.
     self.filteredPlaces = ko.observableArray();
@@ -71,19 +82,19 @@ var ViewModel = function () {
 
     // Function to filter
     self.filter = function () {
-        
+
         // First we remove everything from the visible list
         self.filteredPlaces.removeAll();
 
         // For each of the items in our allPlaces array... 
         self.allPlaces.forEach(function (place) {
-            
+
             // First we remove the marker
             place.marker.setVisible(false);
 
             // Then we compare the name of the place in the array, with the name in our search
             if (place.name.toLowerCase().indexOf(self.query().toLowerCase()) >= 0) {
-                
+
                 // If its the same, we push the place in the visible array (which we cleared)
                 self.filteredPlaces.push(place);
             }
@@ -91,7 +102,7 @@ var ViewModel = function () {
 
         // Now we have the list of all the visible places, based on our query search
         self.filteredPlaces().forEach(function (place) {
-            
+
             // And we put the markers visible for these places
             place.marker.setVisible(true);
         });
