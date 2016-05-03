@@ -6,6 +6,8 @@ var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 17
 });
 
+var infoWindow;
+
 // Create a function that will return us a place, with all its characteristics
 var Place = function (data) {
     this.category = data.category;
@@ -56,17 +58,38 @@ var ViewModel = function () {
             } else {
                 place.marker.setAnimation(google.maps.Animation.BOUNCE);
                 setTimeout(function () {
-                    place.marker.setAnimation(null);
+                    place.marker.setAnimation(null);                    
                 }, 2000);
             }
         }
 
+        // Here we put the infowindow and open it when there is the click event
+        google.maps.event.addListener(place.marker, 'click', function () {
+            // Create a Google Maps InfoWindow object
+            infoWindow = new google.maps.InfoWindow();
+            
+            // Put all the html and the information from the place object in a variable
+            var content = '<div class="info-window">' 
+            content += '<i class="' + place.icon +'"></i>&nbsp;'
+            content += '<span class="category">' + place.category + '</span>'
+            content += '<h3 class="name">' + place.name + '</h3>' 
+            content += '<p class="address">' + place.address + '</p>' 
+            content += '<p class="web">' + place.web + '</p>'
+            content += '</div>';
+                                    
+            // Put the content variable in the infoWindow
+            infoWindow.setContent(content);
+            
+            // Open the infowindow
+            infoWindow.open(map, place.marker);
+        });
+
     });
-    
+
     // In the HTML, we have put the click databind in the <li> so that, when clicked, this will initiate
     // We trigger the bounce in the map marker
     self.list = function (place, marker) {
-        google.maps.event.trigger(place.marker, 'click'); 
+        google.maps.event.trigger(place.marker, 'click');
     };
 
     // Places that should be visible, based on user input.

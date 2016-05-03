@@ -95,6 +95,12 @@ body {
     .web {
         margin: 0;
     } 
+    
+    .info-window {
+        min-width: 200px;
+        min-height: 150px;
+        padding: 5px 0;
+    }
 
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
     #map {
