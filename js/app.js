@@ -1,169 +1,101 @@
-// Create variables used in the app
-var map, marker, query, infowindow, contentString;
-var search = function () { };
-var placesListLength = places.length;
-var markers = [];
+// The ViewModel
 
-// Function to initialize Google Maps 
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 41.4029277, lng: 2.157448 },
-        zoom: 17
-    });
+// Create the Google Maps, centered in the neighbourhood and empty
+var map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: 41.4029277, lng: 2.157448 },
+    zoom: 17
+});
 
+// Create a function that will return us a place, with all its characteristics
+var Place = function (data) {
+    this.category = data.category;
+    this.address = data.address;
+    this.icon = data.icon;
+    this.web = data.web;
+    this.name = data.name;
+    this.latitude = data.latitude;
+    this.longitude = data.longitude;
+    this.marker = null;
+};
 
-    contentString = '<div id="content">' +
-        '<div id="siteNotice">' +
-        '</div>' +
-        '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-        '<div id="bodyContent">' +
-        '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-        'sandstone rock formation in the southern part of the ' +
-        'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
-        'south west of the nearest large town, Alice Springs; 450&#160;km ' +
-        '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
-        'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
-        'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
-        'Aboriginal people of the area. It has many springs, waterholes, ' +
-        'rock caves and ancient paintings. Uluru is listed as a World ' +
-        'Heritage Site.</p>' +
-        '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-        'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
-        '(last visited June 22, 2009).</p>' +
-        '</div>' +
-        '</div>';
-
-    infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
-
-    // Put list of places in the map
-    for (var i = 0; i < placesListLength; i++) {
-        marker = new google.maps.Marker({
-            animation: google.maps.Animation.DROP,
-            map: map,
-            position: new google.maps.LatLng(places[i].latitude, places[i].longitude),
-            name: places[i].name
-        });
-        //markers.push(marker);
-        marker.addListener('click', function () {
-            infowindow.open(map, marker);
-        });
-    }
-}
-
-// Function to toggle the map markers
-function toggleBounce() {
+// Create a function to toggle the marker, when we click into it or into the list
+var toggleMarker = function () {
     if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
     } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
     }
-}
-
-
-
-var viewModel = {
-
-    // Put all the places in the list by default
-    // If we put (places) instead of (places.slice(0)), when we removeAll 
-    // we will actually delete everything in the array... 
-    places: ko.observableArray(places.slice(0)),
-
-
-
-    // Observable for the search. Empty because we haven't searched anything yet
-    query: ko.observable(''),
-
-    search: function (value) {
-        // Remove all the current places, which removes them from the view
-        viewModel.places.removeAll();
-
-        // Go through all the places. If the name or the category matches the one
-        // in the search, push the place to the visible array
-        for (var i = 0; i < placesListLength; i++) {
-            if (places[i].name.toLowerCase().indexOf(value.toLowerCase()) >= 0
-                || places[i].category.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
-                viewModel.places.push(places[i]);
-            }
-        }
-
-/*
-        for (var i = 0; i < markers.length; i++) {
-            // Take away all the markers:
-            markers[i].setVisible(false);
-            // Put back some:
-            if (markers[i].name.toLowerCase().indexOf(self.query().toLowerCase()) >= 0) {
-                markers[i].setVisible(true);
-            }
-        }*/
-
-    }
-
 };
 
-viewModel.query.subscribe(viewModel.search);
+// Create a function for the infoWindow
 
-ko.applyBindings(viewModel);
+// Create the KO function, where we will put all the app
+var ViewModel = function () {
+    var self = this;
 
+    // Create empty array, to put later the list of all the places
+    self.allPlaces = [];
 
+    // Loop through all the places in the places.js to put them on screen
+    // This way, we have all the places loaded at the beginning
+    places.forEach(function (place) {
 
-/*
-var ViewModel = function() {
+        // Put the places into the list
+        self.allPlaces.push(new Place(place));
 
-    infowindow = new google.maps.InfoWindow();
-    var listLocationsLength = places.length;
+    });
 
-    // Placing the icons on the map for every hard-coded location.
-
-    for (var i = 0; i < listLocationsLength; i++) {
-
-        // Changing the icon to a corresponding flag. Along with the size of the icons on the map.        
-        var location = places[i];
-        var latLng = new google.maps.LatLng(places[i].latitude, places[i].longitude);
-        var marker = new google.maps.Marker({
-            animation: google.maps.Animation.DROP,
+    self.allPlaces.forEach(function (place) {
+        // Put the places into the Google Maps with markers
+        place.marker = new google.maps.Marker({
             map: map,
-            position: latLng,
-            name: places[i].name
-        });
-        //tagList.push(location.name); // Taglist added to be used by auto-complete.
-        location.marker = marker;
-
-        marker.addListener('visible_changed', function() { // Added in resubmission, to hide the marker when its visibility changes
-            infowindow.close(map, marker);
+            position: { lat: place.latitude, lng: place.longitude },
+            title: place.name + ' (' + place.category + ')',
+            animation: google.maps.Animation.DROP
         });
 
-        // Opening infowindows on clicking the hard-coded markers.
+        // Add listeners onto the marker, such as "click" listeners.
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    });
 
-            return function() {
-                infowindow.open(map, marker);
-                toggleBounce(marker);
-                loadData(marker, infowindow);
-                loadPhoto(marker, infowindow);
-            };
+    // Places that should be visible, based on user input.
+    self.filteredPlaces = ko.observableArray();
 
-            // Animating the markers when clicked
+    // All places should be visible at first, so we put them in the visible list
+    self.allPlaces.forEach(function (place) {
+        self.filteredPlaces.push(place);
+    });
 
-            function toggleBounce(marker) {
-                if (marker.getAnimation() !== null) {
-                    marker.setAnimation(null);
-                } else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                    setTimeout(stopBounce, 2100); // Exactly 3 bounces when clicking
+    // Create empty variable, which will give us the user's search
+    self.query = ko.observable('');
 
-                    function stopBounce() {
-                        marker.setAnimation(null);
-                    }
-                }
+    // Function to filter
+    self.filter = function () {
+        
+        // First we remove everything from the visible list
+        self.filteredPlaces.removeAll();
+
+        // For each of the items in our allPlaces array... 
+        self.allPlaces.forEach(function (place) {
+            
+            // First we remove the marker
+            place.marker.setVisible(false);
+
+            // Then we compare the name of the place in the array, with the name in our search
+            if (place.name.toLowerCase().indexOf(self.query().toLowerCase()) >= 0) {
+                
+                // If its the same, we push the place in the visible array (which we cleared)
+                self.filteredPlaces.push(place);
             }
-        })(marker, i));
+        });
 
-    }
-    
-}
+        // Now we have the list of all the visible places, based on our query search
+        self.filteredPlaces().forEach(function (place) {
+            
+            // And we put the markers visible for these places
+            place.marker.setVisible(true);
+        });
+    };
+};
+
 ko.applyBindings(new ViewModel());
-
-*/

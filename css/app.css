@@ -40,7 +40,7 @@ body {
     background: #f49288;
     padding: 10px;
     box-shadow: 2px 2px 2px #6f150c;
-    height: 100px;
+    height: 90px;
     margin: 20px 0 0 0;
 }
 
@@ -90,16 +90,11 @@ body {
             
     .address {
         margin: 0 0 5px 0;
-    }
+    }   
     
-    .link {
-        color: #333;
-        text-decoration: none;
-    }
-    
-    .link:hover {
-        text-decoration: underline;
-    }
+    .web {
+        margin: 0;
+    } 
 
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
     #map {
