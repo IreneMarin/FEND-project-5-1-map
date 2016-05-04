@@ -9,6 +9,7 @@ developing a single-page application featuring a map of a neighborhood, adding a
 ### How to run the application 
 
 Download the repository in your desktop, unzip it and open the "index.html" file in your browser to run the project. 
+
 Or you can open it here: [Neighbourhood Map](http://irene.marin.cat/udacity/project5/index.html)
 
 --------------------
