@@ -8,7 +8,7 @@ var places = [{
     web: 'messiepizza.es',
     latitude: 41.4009036,
     longitude: 2.1565914
-}, {   
+}, {
     category: 'restaurant',
     tags: 'restaurants, sushi, japanese',
     icon: 'fa fa-cutlery',
@@ -16,8 +16,8 @@ var places = [{
     address: 'Goya, 9',
     web: 'kibuka.com',
     latitude: 41.4002376,
-    longitude: 2.1585076        
-}, {   
+    longitude: 2.1585076
+}, {
     category: 'restaurant',
     tags: 'restaurants, creperies, french',
     icon: 'fa fa-cutlery',
@@ -26,7 +26,7 @@ var places = [{
     web: 'lolladeltorrent.com',
     latitude: 41.4014729,
     longitude: 2.1570592
-}, {   
+}, {
     category: 'restaurant',
     tags: 'restaurants, sushi, japanese',
     icon: 'fa fa-cutlery',
@@ -35,7 +35,7 @@ var places = [{
     web: 'restaurantetoyo.com',
     latitude: 41.3987222,
     longitude: 2.1593477
-}, {   
+}, {
     category: 'restaurant',
     tags: 'restaurants, sushi, japanese',
     icon: 'fa fa-cutlery',
@@ -44,7 +44,7 @@ var places = [{
     web: '',
     latitude: 41.3996514,
     longitude: 2.1631275
-}, {   
+}, {
     category: 'restaurant',
     tags: 'restaurants, arabian',
     icon: 'fa fa-cutlery',
@@ -53,7 +53,7 @@ var places = [{
     web: '',
     latitude: 41.403459,
     longitude: 2.1567388
-}, {   
+}, {
     category: 'restaurant',
     tags: 'restaurants, pizza, salad',
     icon: 'fa fa-cutlery',

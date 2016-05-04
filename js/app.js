@@ -41,14 +41,14 @@ var yelpContent = function (name, latitude, longitude) {
         oauth_timestamp: Math.floor(Date.now() / 1000),     // Timestamp for the request in seconds since the Unix epoch.
         oauth_signature_method: 'HMAC-SHA1',
         oauth_version: '1.0',
-        callback: 'cb',                                     // This is crucial to include for jsonp implementation in AJAX or else the oauth-signature will be wrong.
+        callback: 'cb',
 
         // Then the parameters for the search filters:
         // https://www.yelp.com/developers/documentation/v2/search_api              
-        term: name,                                   // Search term. If term isn't included we search everything. The term also accepts business names.         
+        term: name,                                         // Search term. If term isn't included we search everything. The term also accepts business names.         
         limit: 1,                                           // Number of business results to return.
         location: '08012,Barcelona',                        // Specifies the combination of "address, neighborhood, city, state or zip, optional cuntry" to be used when searching for businesses.
-        cll: latitude + ',' + longitude         // Latitude + longitude parameter can be specified as a hint to the geocoder.
+        cll: latitude + ',' + longitude                     // Latitude + longitude parameter can be specified as a hint to the geocoder.
     };
 
     var encodedSignature = oauthSignature.generate('GET', yelp_url, parameters, 'G-1cK8iunIRG28AHNI2vYjW-jo0', 'ae9TrbJ_uPTA4qDLTs0RIuwG508');
@@ -57,18 +57,21 @@ var yelpContent = function (name, latitude, longitude) {
     var settings = {
         url: yelp_url,
         data: parameters,
-        cache: true,                    // This is crucial to include as well to prevent jQuery from adding on a cache-buster parameter "_=23489489749837", invalidating our oauth-signature
+        cache: true,
         dataType: 'jsonp',
         success: function (results) {
             // Do stuff with results
             // Put the content of the Yelp API to a variable, that we will call in the infoWindow content  
-            yelpContentResult = '<img src="' + results.businesses[0].rating_img_url + '"><img src="' + results.businesses[0].image_url + '"><p>' + results.businesses[0].url + '</p><p>' + results.businesses[0].snippet_text + '</p>'
+            yelpContentResult = '<img src="' + results.businesses[0].rating_img_url + '">'
+            yelpContentResult += '<img src="' + results.businesses[0].image_url + '">'
+            yelpContentResult += '<p>' + results.businesses[0].url + '</p>'
+            yelpContentResult += '<p>' + results.businesses[0].snippet_text + '</p>'
             console.log(yelpContentResult);
             return yelpContentResult;
         },
         error: function () {
             // Do stuff on fail
-            yelpContentResult = '<p>Yelp have no information for this place.</p>';
+            yelpContentResult = '<p>Yelp has no information for this place.</p>';
             console.log(yelpContentResult);
             return yelpContentResult;
         }
@@ -91,7 +94,6 @@ var ViewModel = function () {
 
         // Put the places into the list
         self.allPlaces.push(new Place(place));
-
     });
 
     self.allPlaces.forEach(function (place) {
@@ -123,7 +125,7 @@ var ViewModel = function () {
             // Create a Google Maps InfoWindow object
             infoWindow = new google.maps.InfoWindow();
             var yelpResults = yelpContent(place.name, place.latitude, place.longitude);
-            
+
             // Put all the html and the information from the place object in a variable
             var content = '<div class="info-window">'
             content += '<i class="' + place.icon + '"></i>&nbsp;'

@@ -7,70 +7,74 @@ body {
     color: #333;
 }
 
+/* Map */
 #map {
-    height: calc(100% - 70px);
-    width: calc(100% - 360px);
+    width: 100%;
+    height: calc(100% - 60px);
 }
 
-#mobile,
-#sidebar {
-    position: absolute;
-}
-
+/* Search bar */
 .search-bar {
     top: 0;
+    width: 100%;
+    height: 60px;
     background: #C0392B;
-    padding: 12px 10px;
-    height: 36px;
-    width: calc(100% - 360px);
-}
-
-#sidebar {
-    top: 0;
-    width: 320px;
-    bottom: 0;
-}
-
-#mobile {
-    top: 0;
-    right: 320px;
-    left: 0;
-    bottom: 0;
-    z-index: 99;
-}
-
-.sidebar {
-    width: 320px;
-    height: 100%;
-    background-color: #E74C3C;
-    position: fixed;
-    right: 0;
-    padding: 20px;
-    overflow: scroll;
 }
 
 h1 {
-    width: 70%;
-    float: left;
-    color: #fff;
-    margin: 0;
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 35px;
-    letter-spacing: 1.5px;
-    padding-left: 30px;
+    display: none;
 }
 
-.search {
-    width: 25%;
-    margin-right: 30px;
-    float: right;
+.search-input {
+    width: 80%;
+    float: left;
+    margin: 10px 3% 0 3%;
     padding: 10px;
     border-radius: 4px;
     border: none;
     font-size: 14px;
     box-shadow: 2px 2px 2px #6f150c;
+}
+
+/* Hide/show sidebar menu*/
+#right-menu {
+    float: right;
+    margin: 16px 20px 0 0;
+}
+
+    #right-menu .fa {
+        font-size: 24px;
+        color: #333;
+    }
+
+.sidr {
+    display: block;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    z-index: 999999;
+    width: 240px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+    .sidr.right {
+        left: auto;
+        right: -240px;
+    }
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    padding: 0 20px 20px;
+    top: 60px;
+    height: 100%;
+    background-color: #E74C3C;
+    overflow: scroll;
+}
+
+.filters {
+    display: none;
 }
 
 .list {
@@ -82,105 +86,130 @@ h1 {
     background: #f49288;
     padding: 10px;
     box-shadow: 2px 2px 2px #6f150c;
-    height: 90px;
     margin: 20px 0 0 0;
 }
 
-.item:hover {
-    background: #C0392B;
-    cursor: pointer;
+    .item:hover {
+        background: #C0392B;
+        cursor: pointer;
+    }
+
+/* Sidebar and infoWindow*/
+h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 5px 0;
 }
 
-    .foto {
-        width: 100px;
-        height: 100px;
-        float: left;
-        padding: 0 10px 0 0;
-    }
-    
-    .name {
-        font-size: 14px;
-        text-transform: uppercase;
-        margin: 5px 0;
-    }
-    
-    .category,
-    .fa {
-        margin: 0;
-        color: #6f150c;
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-    }
-    
-    .fa {
-        font-size: 12px;
-    }
-    
-    .filters {
-        padding: 0 0 0 20px;
-    }
-    
-    .filters .fa {
-        font-size: 20px;
-        padding: 5px 10px;
-    }    
-            
-    .address {
-        margin: 0 0 5px 0;
-    }   
-    
-    .web {
-        margin: 0;
-    } 
-    
-    .info-window {
-        min-width: 200px;
-        min-height: 150px;
-        padding: 5px 0;
+p {
+    margin: 0 0 5px;
+}
+
+.category {
+    color: #6f150c;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.fa {
+    font-size: 12px;
+    color: #6f150c;
+}
+
+.info-window {
+    min-width: 200px;
+    min-height: 150px;
+    padding: 5px 0;
+}
+
+@media screen and (min-width: 1024px) {
+    /* Map */
+    #map {
+        width: calc(100% - 240px);
     }
 
-@media screen and (max-width: 1279px) {
-    #map {
-        width: calc(100% - 200px);
-    }
-    
-    .filters {
-        display: none;
-    }
-    
-    .sidebar {
-        width: 200px;
-    }
-    
-    .search {
-        padding: 10px 0 10px 10px;
-    }
-    
+    /* Search bar */
     h1 {
+        float: left;
+        display: block;
+        color: #fff;
+        margin: 17px 0 0 20px;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 1.5px;
+    }
+
+    .search-input {
+        width: 200px;
+        float: right;
+        margin: 10px 20px 0 0;
+        padding: 10px 5px;
+    }
+
+    /* Hide/show sidebar */
+    #right-menu {
         display: none;
     }
-    
-    .search {
-        width: 100%;
+
+    .sidr {
+        display: block;
+        position: fixed;
+        top: 0;
+        height: 100%;
+        z-index: 999999;
+        width: 240px;
+        overflow-x: visible;
+        overflow-y: visible;
+    }
+
+        .sidr.right {
+            left: 0;
+            right: 0;
+        }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        display: block;
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    /* Map */
+    #map {
+        width: calc(100% - 360px);
+    }
+
+    /* Search bar */
+    h1 {
         margin-left: 30px;
     }
-        
-    .item {
-        height: auto;
+
+    .search-input {
+        width: 304px;
+        margin: 10px 34px 0 0;
     }
-    
-        .foto {
-            width: 70px;
-            height: 70px;
-            padding: 0 5px 5px 0;
+
+    /* Sidebar */
+    .sidebar {
+        width: 320px;
+        padding: 20px;
+    }
+
+    .filters {
+        display: block;
+        padding: 0 0 0 20px;
+    }
+
+        .filters .fa {
+            font-size: 20px;
+            padding: 5px 10px;
         }
-        
-        .name {
-            margin: 5px 0;
-        }
-        
-        .address {
-            clear: both;
-        }
+
+    .item {
+        height: 90px;
+    }
 }
