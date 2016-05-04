@@ -11,15 +11,19 @@
 
 <body>
     <!-- The View -->
-    <div class="sidebar">
+    <div class="search-bar">
+        <h1>Welcome to La Vila de Gràcia, in Barcelona</h1>
         <input class="search" data-bind="textInput: query, event: {keyup: filter}" type="search" placeholder="Where do you want to go?">
+        <button class="button-mobile">toggle</button>
+    </div>
+    <div id="sidebar" class="sidebar">        
         <div class="filters">
-            <a href="#"><i class="fa fa-cutlery"></i></a>
-            <a href="#"><i class="fa fa-beer"></i></a>
-            <a href="#"><i class="fa fa-coffee"></i></a>
-            <a href="#"><i class="fa fa-book"></i></a>
-            <a href="#"><i class="fa fa-gamepad"></i></a>
-            <a href="#"><i class="fa fa-video-camera"></i></a>
+            <i class="fa fa-cutlery"></i>
+            <i class="fa fa-beer"></i>
+            <i class="fa fa-coffee"></i>
+            <i class="fa fa-book"></i>
+            <i class="fa fa-gamepad"></i>
+            <i class="fa fa-video-camera"></i>
         </div>
         <ul class="list" data-bind="foreach: filteredPlaces">
             <li class="item" data-bind="click: $parent.list">
@@ -40,6 +44,14 @@
     <script src="js/libs/oauth-signature.js"></script>
     <script src="js/places.js"></script>
     <script src="js/app.js"></script>
+    <script>
+        $('button').toggle(
+            function() {
+                $('#mobile').animate({right: 0})
+            }, function() {
+                $('#mobile').animate({right:320})
+        })
+    </script>
 </body>
 
 </html>
