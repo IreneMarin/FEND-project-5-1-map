@@ -1,7 +1,7 @@
 // The ViewModel
 
 // Create global variables used
-var map, infoWindow, yelpContentResult;
+var map, infoWindow;
 
 // Create the Google Maps, centered in the neighbourhood and empty
 map = new google.maps.Map(document.getElementById('map'), {
@@ -21,7 +21,7 @@ var Place = function (data) {
     this.marker = null;
 };
 
-var yelpContent = function (name, latitude, longitude) {
+var yelpContent = function (name, icon, category, address, web, latitude, longitude, marker) {
 
     // Basic code for the Authentication of the Yelp API, gotten from an example of coach Mark in the Udacity Forums
     // Generates a random number and returns it as a string for OAuthentication 
@@ -60,20 +60,28 @@ var yelpContent = function (name, latitude, longitude) {
         cache: true,
         dataType: 'jsonp',
         success: function (results) {
-            // Do stuff with results
-            // Put the content of the Yelp API to a variable, that we will call in the infoWindow content  
-            yelpContentResult = '<img src="' + results.businesses[0].rating_img_url + '">'
-            yelpContentResult += '<img src="' + results.businesses[0].image_url + '">'
-            yelpContentResult += '<p>' + results.businesses[0].url + '</p>'
-            yelpContentResult += '<p>' + results.businesses[0].snippet_text + '</p>'
-            console.log(yelpContentResult);
-            return yelpContentResult;
+            // Create a Google Maps InfoWindow object
+            infoWindow = new google.maps.InfoWindow();
+
+            // Put the information from the place object and from the Yelp API in a variable
+            var content = '<div class="info-window">'
+            content += '<img class="yelp-image" src="' + results.businesses[0].image_url + '">'
+            content += '<i class="' + icon + '"></i>&nbsp;'
+            content += '<span class="category">' + category + '</span>'
+            content += '<h3>' + name + '</h3>'
+            content += '<img src="' + results.businesses[0].rating_img_url + '">'
+            content += '<p>' + address + '</p>'
+            content += '<p><a class="yelp-link" href="' + web + '" target="_blank"><i class="fa fa-globe"></i> Visit website</a>&nbsp;|&nbsp;'
+            content += '<a class="yelp-link" href="' + results.businesses[0].url + '" target="_blank"><i class="fa fa-yelp"></i> Visit Yelp site</a></p>'
+            content += '<p class="yelp-snippet">' + results.businesses[0].snippet_text + '</p>'
+            content += '</div>';
+
+            // Put the content variable in the infoWindow and open the infoWindow
+            infoWindow.setContent(content);
+            infoWindow.open(map, marker);
         },
         error: function () {
-            // Do stuff on fail
-            yelpContentResult = '<p>Yelp has no information for this place.</p>';
-            console.log(yelpContentResult);
-            return yelpContentResult;
+            console.log("We have no Yelp info");
         }
     };
 
@@ -122,24 +130,27 @@ var ViewModel = function () {
 
         // Here we put the infowindow and open it when there is the click event
         google.maps.event.addListener(place.marker, 'click', function () {
-            // Create a Google Maps InfoWindow object
-            infoWindow = new google.maps.InfoWindow();
-            var yelpResults = yelpContent(place.name, place.latitude, place.longitude);
+            var yelpContentResult = yelpContent(place.name, place.icon, place.category, place.address, place.web, place.latitude, place.longitude, place.marker);
 
-            // Put all the html and the information from the place object in a variable
-            var content = '<div class="info-window">'
-            content += '<i class="' + place.icon + '"></i>&nbsp;'
-            content += '<span class="category">' + place.category + '</span>'
-            content += '<h3 class="name">' + place.name + '</h3>'
-            content += '<p class="address">' + place.address + '</p>'
-            content += '<p class="web">' + place.web + '</p>'
+            // If the Yelp API gives us nothing, we create the infoWindow with the basic information only
+            if (yelpContentResult === null) {
+                // Create a Google Maps InfoWindow object
+                infoWindow = new google.maps.InfoWindow();
 
-            // Put the content that the Yelp API has provided about this place, or the error message
-            content += yelpResults + '</div>';
+                // Put all the html and the information from the place object in a variable
+                var content = '<div class="info-window">'
+                content += '<i class="' + place.icon + '"></i>&nbsp;'
+                content += '<span class="category">' + place.category + '</span>'
+                content += '<h3>' + place.name + '</h3>'
+                content += '<p>' + place.address + '</p>'
+                content += '<p><a class="yelp-link" href="' + place.web + '" target="_blank"><i class="fa fa-globe"></i> Visit website</a></p>'
+                content += '<p>Yelp has no information for this place.</p>';
+                content += '</div>';
 
-            // Put the content variable in the infoWindow and open the infoWindow
-            infoWindow.setContent(content);
-            infoWindow.open(map, place.marker);
+                // Put the content variable in the infoWindow and open the infoWindow
+                infoWindow.setContent(content);
+                infoWindow.open(map, marker);
+            }
         });
 
     });

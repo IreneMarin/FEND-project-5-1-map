@@ -120,7 +120,25 @@ p {
 .info-window {
     min-width: 200px;
     min-height: 150px;
-    padding: 5px 0;
+    padding: 15px 0;
+}
+
+.yelp-image {
+    float: left;
+    padding: 0 10px 10px 0;
+}
+
+.yelp-link {
+    color: #6f150c;
+    text-decoration: none;
+}
+
+    .yelp-link:hover {
+        color: #333;
+    }
+
+.yelp-snippet {
+    clear: both;
 }
 
 @media screen and (min-width: 1024px) {
