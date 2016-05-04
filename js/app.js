@@ -48,7 +48,7 @@ var yelpContent = function (name, icon, category, address, web, latitude, longit
         // https://www.yelp.com/developers/documentation/v2/search_api              
         term: name,                                         // Search term. If term isn't included we search everything. The term also accepts business names.         
         limit: 1,                                           // Number of business results to return.
-        location: '08012,Barcelona',                        // Specifies the combination of "address, neighborhood, city, state or zip, optional cuntry" to be used when searching for businesses.
+        location: '08012,Barcelona,Spain',                        // Specifies the combination of "address, neighborhood, city, state or zip, optional cuntry" to be used when searching for businesses.
         cll: latitude + ',' + longitude                     // Latitude + longitude parameter can be specified as a hint to the geocoder.
     };
 
@@ -66,7 +66,9 @@ var yelpContent = function (name, icon, category, address, web, latitude, longit
 
             // Put the information from the place object and from the Yelp API in a variable
             var content = '<div class="info-window">'
-            content += '<img class="yelp-image" src="' + results.businesses[0].image_url + '">'
+            if (results.businesses[0].image_url !== undefined) {
+                content += '<img class="yelp-image" src="' + results.businesses[0].image_url + '">'
+            }            
             content += '<i class="' + icon + '"></i>&nbsp;'
             content += '<span class="category">' + category + '</span>'
             content += '<h3>' + name + '</h3>'
@@ -74,7 +76,9 @@ var yelpContent = function (name, icon, category, address, web, latitude, longit
             content += '<p>' + address + '</p>'
             content += '<p><a class="yelp-link" href="' + web + '" target="_blank"><i class="fa fa-globe"></i> Visit website</a>&nbsp;|&nbsp;'
             content += '<a class="yelp-link" href="' + results.businesses[0].url + '" target="_blank"><i class="fa fa-yelp"></i> Visit Yelp site</a></p>'
-            content += '<p class="yelp-snippet">' + results.businesses[0].snippet_text + '</p>'
+            if (results.businesses[0].snippet_text !== undefined) {
+                content += '<p class="yelp-snippet">' + results.businesses[0].snippet_text + '</p>'
+            }            
             content += '</div>';
 
             // Put the content variable in the infoWindow and open the infoWindow
