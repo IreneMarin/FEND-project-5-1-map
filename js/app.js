@@ -17,7 +17,7 @@ function initMap() {
 // Create an alert if Google Maps doesn't respond
 function googleError() {
     'use strict';
-    alert("Google has crashed. It's the end <i class='fa fa-bomb'></i>");
+    alert("Google is not responding. Check your connection or come back later.");
 }
 
 // Create a function that will return us a place, with all its characteristics
@@ -134,8 +134,9 @@ var yelpContent = function (name, icon, category, address, web, latitude, longit
         
     }).fail(function () {
         // Use the fail to handle errors on our side. If our app is crashing for some reason, here we can see it.
-        console.log("We have no Yelp info");
         alert("Yelp is crashing because of our side...");
+        
+        clearTimeout(yelpRequestTimeout);
         //yelpContentError();
     });
 };
