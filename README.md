@@ -6,6 +6,13 @@ developing a single-page application featuring a map of a neighborhood, adding a
 
 -------------------
 
+### How to run the application 
+
+Download the repository in your desktop, unzip it and open the "index.html" file in your browser to run the project. 
+Or you can open it here: [Neighbourhood Map](http://irene.marin.cat/udacity/project5/index.html)
+
+--------------------
+
 ### Attributions
 
 For this project, I have used the [Knockout JS framework](http://knockoutjs.com/), the [Google Maps API](https://developers.google.com/maps/), the [Yelp API](https://www.yelp.com/developers/documentation/v2/overview) and the [Sidr jQuery toggle function](https://www.berriart.com/sidr/).
