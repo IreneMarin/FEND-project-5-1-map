@@ -18,14 +18,7 @@ To help me get through it, I have used different resources, like:
 
 [Example of a live search with KO](https://jsfiddle.net/2q8Gn/)
 
-[JavaScript OAuth 1.0a signature generator](https://github.com/bettiolo/oauth-signature-js)
-
-And the Udacity Discussion Forums, where some useful threads were: 
-- [Having trouble getting started using APIs](https://discussions.udacity.com/t/im-having-trouble-getting-started-using-apis/13597)
-- [Yelp API won't return anything](https://discussions.udacity.com/t/yelp-api-wont-return-anything-but-i-get-request-is-correct/28844)
-- [Filtering list of locations with KO](https://discussions.udacity.com/t/filtering-my-list-of-locations-with-ko/38858)
-- [Google Map Marker filter issues](https://discussions.udacity.com/t/google-map-marker-filter-issues/15244)
-- [Implementing search function](https://discussions.udacity.com/t/implementing-the-search-function/42420)
+And the Udacity Discussion Forums.
 
 -----------------------------
 
