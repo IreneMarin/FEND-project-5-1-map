@@ -5,7 +5,7 @@ var places = [{
     icon: 'fa fa-cutlery',
     name: 'Messié',
     address: 'Torrent de Olla, 65',
-    web: 'messiepizza.es',
+    web: 'http://messiepizza.es',
     latitude: 41.4009104986,
     longitude: 2.1586897765
 }, {
@@ -14,7 +14,7 @@ var places = [{
     icon: 'fa fa-cutlery',
     name: 'Kibuka',
     address: 'Goya, 9',
-    web: 'kibuka.com',
+    web: 'http://kibuka.com',
     latitude: 41.3992606979,
     longitude: 2.1565976534
 }, {
@@ -23,7 +23,7 @@ var places = [{
     icon: 'fa fa-cutlery',
     name: 'Olla del Torrent',
     address: 'Torrent de Olla, 106',
-    web: 'lolladeltorrent.com',
+    web: 'http://lolladeltorrent.com',
     latitude: 41.4017836688,
     longitude: 2.1576866303
 }, {
@@ -41,7 +41,7 @@ var places = [{
     icon: 'fa fa-cutlery',
     name: 'I què?',
     address: 'Topazi, 8',
-    web: 'iquerestaurant.com',
+    web: 'http://iquerestaurant.com',
     latitude: 41.4045439362,
     longitude: 2.1554121171
 }, {
@@ -50,7 +50,7 @@ var places = [{
     icon: 'fa fa-beer',
     name: 'El Otro',
     address: 'Travessera de Gràcia, 167',
-    web: 'barelotro.com',
+    web: 'http://barelotro.com',
     latitude: 41.4015020008,
     longitude: 2.1578636805
 }, {
@@ -86,7 +86,7 @@ var places = [{
     icon: 'fa fa-coffee',
     name: 'Suís',
     address: 'Travessera de Gràcia, 151',
-    web: 'elsuis.com',
+    web: 'http://elsuis.com',
     latitude: 41.4008863540,
     longitude: 2.1569678227
 }, {
@@ -104,7 +104,7 @@ var places = [{
     icon: 'fa fa-book',
     name: 'Haiku',
     address: 'Montseny, 7',
-    web: 'haikubarcelona.com',
+    web: 'http://haikubarcelona.com',
     latitude: 41.4021457657,
     longitude: 2.1550527673
 }, {
@@ -113,7 +113,7 @@ var places = [{
     icon: 'fa fa-book',
     name: 'Aldarull',
     address: 'Torrent de Olla, 72',
-    web: 'acciocultural.org',
+    web: 'http://acciocultural.org',
     latitude: 41.4007454764,
     longitude: 2.1590653520
 }, {
@@ -122,7 +122,7 @@ var places = [{
     icon: 'fa fa-book',
     name: 'Antifaz Comics',
     address: 'Gran de Gràcia, 239',
-    web: 'antifazcomic.cat',
+    web: 'http://antifazcomic.cat',
     latitude: 41.4053808015,
     longitude: 2.1506217580
 }, {
@@ -131,7 +131,7 @@ var places = [{
     icon: 'fa fa-gamepad',
     name: 'Game.es',
     address: 'Gran de Gràcia, 116',
-    web: 'game.es',
+    web: 'http://game.es',
     latitude: 41.4012444335,
     longitude: 2.1539155107
 }, {
@@ -140,7 +140,7 @@ var places = [{
     icon: 'fa fa-gamepad',
     name: 'The Curiosity Shop',
     address: 'Ramon y Cajal, 13',
-    web: 'thecuriosityshop.es',
+    web: 'http://thecuriosityshop.es',
     latitude: 41.4023630493,
     longitude: 2.1581748586
 }, {
@@ -158,7 +158,7 @@ var places = [{
     icon: 'fa fa-video-camera',
     name: 'Teatreneu',
     address: 'Terol, 26',
-    web: 'teatreneu.com',
+    web: 'http://teatreneu.com',
     latitude: 41.4032563185,
     longitude: 2.1586683850
 }, {
@@ -167,7 +167,7 @@ var places = [{
     icon: 'fa fa-video-camera',
     name: 'Teatre Lliure de Gràcia',
     address: 'Montseny, 47',
-    web: 'teatrelliure.com',
+    web: 'http://teatrelliure.com',
     latitude: 41.4027734718,
     longitude: 2.1560505490
 }, {
@@ -176,7 +176,7 @@ var places = [{
     icon: 'fa fa-video-camera',
     name: 'Cinemes Girona',
     address: 'Girona, 175',
-    web: 'cinemesgirona.cat',
+    web: 'http://cinemesgirona.cat',
     latitude: 41.3998602205,
     longitude: 2.1645477872
 }, {
@@ -185,7 +185,7 @@ var places = [{
     icon: 'fa fa-video-camera',
     name: 'Bosque Multicines',
     address: 'Rambla del Prat, 16',
-    web: 'grupbalana.com',
+    web: 'http://grupbalana.com',
     latitude: 41.4014375772,
     longitude: 2.1518126588
 }, {
@@ -194,7 +194,7 @@ var places = [{
     icon: 'fa fa-video-camera',
     name: 'Cine Verdi',
     address: 'Torrijos, 14',
-    web: 'cines-verdi.com',
+    web: 'http://cines-verdi.com',
     latitude: 41.4026929970,
     longitude: 2.1595159631
 }];
