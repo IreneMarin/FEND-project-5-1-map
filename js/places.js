@@ -6,8 +6,8 @@ var places = [{
     name: 'Messié',
     address: 'Torrent de Olla, 65',
     web: 'messiepizza.es',
-    latitude: 41.4009036,
-    longitude: 2.1565914
+    latitude: 41.4009104986,
+    longitude: 2.1586897765
 }, {
     category: 'restaurant',
     tags: 'restaurants, sushi, japanese',
@@ -15,8 +15,8 @@ var places = [{
     name: 'Kibuka',
     address: 'Goya, 9',
     web: 'kibuka.com',
-    latitude: 41.4002376,
-    longitude: 2.1585076
+    latitude: 41.3992606979,
+    longitude: 2.1565976534
 }, {
     category: 'restaurant',
     tags: 'restaurants, creperies, french',
@@ -24,26 +24,8 @@ var places = [{
     name: 'Olla del Torrent',
     address: 'Torrent de Olla, 106',
     web: 'lolladeltorrent.com',
-    latitude: 41.4014729,
-    longitude: 2.1570592
-}, {
-    category: 'restaurant',
-    tags: 'restaurants, sushi, japanese',
-    icon: 'fa fa-cutlery',
-    name: 'Toyo',
-    address: 'Torrent de Olla, 10',
-    web: 'restaurantetoyo.com',
-    latitude: 41.3987222,
-    longitude: 2.1593477
-}, {
-    category: 'restaurant',
-    tags: 'restaurants, sushi, japanese',
-    icon: 'fa fa-cutlery',
-    name: 'Ramen-ya Hiro',
-    address: 'Girona, 164',
-    web: '',
-    latitude: 41.3996514,
-    longitude: 2.1631275
+    latitude: 41.4017836688,
+    longitude: 2.1576866303
 }, {
     category: 'restaurant',
     tags: 'restaurants, arabian',
@@ -51,8 +33,8 @@ var places = [{
     name: 'Al Waha',
     address: 'Verdi, 16',
     web: '',
-    latitude: 41.403459,
-    longitude: 2.1567388
+    latitude: 41.4034736423,
+    longitude: 2.1573486720
 }, {
     category: 'restaurant',
     tags: 'restaurants, pizza, salad',
@@ -60,8 +42,8 @@ var places = [{
     name: 'I què?',
     address: 'Topazi, 8',
     web: 'iquerestaurant.com',
-    latitude: 41.4045422,
-    longitude: 2.154889
+    latitude: 41.4045439362,
+    longitude: 2.1554121171
 }, {
     category: 'bar',
     tags: 'bars, beerbar',
@@ -69,8 +51,8 @@ var places = [{
     name: 'El Otro',
     address: 'Travessera de Gràcia, 167',
     web: 'barelotro.com',
-    latitude: 41.401468,
-    longitude: 2.155701
+    latitude: 41.4015020008,
+    longitude: 2.1578636805
 }, {
     category: 'bar',
     tags: 'bars, beerbar',
@@ -78,8 +60,8 @@ var places = [{
     name: 'Bar Vinilo',
     address: 'Matilde, 2',
     web: '',
-    latitude: 41.4001986,
-    longitude: 2.1571333
+    latitude: 41.4004558001,
+    longitude: 2.1570482889
 }, {
     category: 'bar',
     tags: 'bars, beerbar, cocktailbars',
@@ -87,8 +69,8 @@ var places = [{
     name: 'St Germain',
     address: 'Torrent de Olla, 113',
     web: '',
-    latitude: 41.4714437,
-    longitude: 2.1146087
+    latitude: 41.4024234482,
+    longitude: 2.1567371527
 }, {
     category: 'bar',
     tags: 'bars, beerbar',
@@ -96,35 +78,8 @@ var places = [{
     name: 'La Maceta',
     address: 'Progrés, 38',
     web: '',
-    latitude: 41.4005163,
-    longitude: 2.1592543
-}, {
-    category: 'coffee-shop',
-    tags: 'coffeeshops',
-    icon: 'fa fa-coffee',
-    name: 'Cafè Camèlia',
-    address: 'Verdi, 79',
-    web: '',
-    latitude: 41.4051147,
-    longitude: 2.1548722
-}, {
-    category: 'coffee-shop',
-    tags: 'coffeeshops',
-    icon: 'fa fa-coffee',
-    name: 'Oh! Caffe',
-    address: 'Gran de Gràcia',
-    web: '',
-    latitude: 41.3989692,
-    longitude: 2.1476088
-}, {
-    category: 'coffee-shop',
-    tags: 'coffeeshops',
-    icon: 'fa fa-coffee',
-    name: 'Cafè Godot',
-    address: 'Sant Domènec, 19',
-    web: 'cafegodot.com',
-    latitude: 41.4001678,
-    longitude: 2.1564141
+    latitude: 41.3999769565,
+    longitude: 2.1605297962
 }, {
     category: 'coffee-shop',
     tags: 'coffeeshops',
@@ -132,8 +87,8 @@ var places = [{
     name: 'Suís',
     address: 'Travessera de Gràcia, 151',
     web: 'elsuis.com',
-    latitude: 41.4009243,
-    longitude: 2.156545
+    latitude: 41.4008863540,
+    longitude: 2.1569678227
 }, {
     category: 'books',
     tags: 'bookstores',
@@ -141,8 +96,8 @@ var places = [{
     name: 'La Memòria',
     address: 'Plaça de la Vila de Gràcia, 19',
     web: '',
-    latitude: 41.4001503,
-    longitude: 2.157419
+    latitude: 41.4000775542,
+    longitude: 2.1573486963
 }, {
     category: 'books',
     tags: 'bookstores',
@@ -150,8 +105,8 @@ var places = [{
     name: 'Haiku',
     address: 'Montseny, 7',
     web: 'haikubarcelona.com',
-    latitude: 41.4009524,
-    longitude: 2.1565492
+    latitude: 41.4021457657,
+    longitude: 2.1550527673
 }, {
     category: 'books',
     tags: 'bookstores',
@@ -159,8 +114,8 @@ var places = [{
     name: 'Aldarull',
     address: 'Torrent de Olla, 72',
     web: 'acciocultural.org',
-    latitude: 41.4005898,
-    longitude: 2.1570969
+    latitude: 41.4007454764,
+    longitude: 2.1590653520
 }, {
     category: 'books',
     tags: 'bookstores, comicbooks',
@@ -168,8 +123,8 @@ var places = [{
     name: 'Antifaz Comics',
     address: 'Gran de Gràcia, 239',
     web: 'antifazcomic.cat',
-    latitude: 41.4053551,
-    longitude: 2.148452
+    latitude: 41.4053808015,
+    longitude: 2.1506217580
 }, {
     category: 'games',
     tags: 'videogamestores',
@@ -177,8 +132,8 @@ var places = [{
     name: 'Game.es',
     address: 'Gran de Gràcia, 116',
     web: 'game.es',
-    latitude: 41.3989547,
-    longitude: 2.1496657
+    latitude: 41.4012444335,
+    longitude: 2.1539155107
 }, {
     category: 'games',
     tags: 'tabletopgames',
@@ -186,8 +141,8 @@ var places = [{
     name: 'The Curiosity Shop',
     address: 'Ramon y Cajal, 13',
     web: 'thecuriosityshop.es',
-    latitude: 41.4009263,
-    longitude: 2.1504057
+    latitude: 41.4023630493,
+    longitude: 2.1581748586
 }, {
     category: 'games',
     tags: 'escapegames',
@@ -195,8 +150,8 @@ var places = [{
     name: 'Roomin Escape',
     address: 'Robí, 6',
     web: '',
-    latitude: 41.404547,
-    longitude: 2.1547458
+    latitude: 41.4044634196,
+    longitude: 2.1551922421
 }, {
     category: 'cinema & theatre',
     tags: 'theater',
@@ -204,8 +159,8 @@ var places = [{
     name: 'Teatreneu',
     address: 'Terol, 26',
     web: 'teatreneu.com',
-    latitude: 41.4032351,
-    longitude: 2.1564512
+    latitude: 41.4032563185,
+    longitude: 2.1586683850
 }, {
     category: 'cinema & theatre',
     tags: 'theater',
@@ -213,8 +168,8 @@ var places = [{
     name: 'Teatre Lliure de Gràcia',
     address: 'Montseny, 47',
     web: 'teatrelliure.com',
-    latitude: 41.4027398,
-    longitude: 2.1538444
+    latitude: 41.4027734718,
+    longitude: 2.1560505490
 }, {
     category: 'cinema & theatre',
     tags: 'movietheaters',
@@ -222,17 +177,8 @@ var places = [{
     name: 'Cinemes Girona',
     address: 'Girona, 175',
     web: 'cinemesgirona.cat',
-    latitude: 41.399656,
-    longitude: 2.1623361
-}, {
-    category: 'cinema & theatre',
-    tags: 'movietheaters',
-    icon: 'fa fa-video-camera',
-    name: 'Cine Texas',
-    address: 'Bailèn, 205',
-    web: 'cinemestexas.cat',
-    latitude: 41.4020494,
-    longitude: 2.1614495
+    latitude: 41.3998602205,
+    longitude: 2.1645477872
 }, {
     category: 'cinema & theatre',
     tags: 'movietheaters',
@@ -240,8 +186,8 @@ var places = [{
     name: 'Bosque Multicines',
     address: 'Rambla del Prat, 16',
     web: 'grupbalana.com',
-    latitude: 41.4015154,
-    longitude: 2.1496618
+    latitude: 41.4014375772,
+    longitude: 2.1518126588
 }, {
     category: 'cinema & theatre',
     tags: 'movietheaters',
@@ -249,6 +195,6 @@ var places = [{
     name: 'Cine Verdi',
     address: 'Torrijos, 14',
     web: 'cines-verdi.com',
-    latitude: 41.4040056,
-    longitude: 2.1546641
+    latitude: 41.4026929970,
+    longitude: 2.1595159631
 }];
