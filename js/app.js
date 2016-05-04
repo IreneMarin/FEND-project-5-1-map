@@ -135,10 +135,8 @@ var ViewModel = function () {
             // Put the content that the Yelp API has provided about this place, or the error message
             content += yelpResults + '</div>';
 
-            // Put the content variable in the infoWindow
+            // Put the content variable in the infoWindow and open the infoWindow
             infoWindow.setContent(content);
-
-            // Open the infowindow
             infoWindow.open(map, place.marker);
         });
 
