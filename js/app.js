@@ -206,7 +206,7 @@ var ViewModel = function () {
         // Here we put the infowindow and open it when there is the click event
         google.maps.event.addListener(place.marker, 'click', function () {
             yelpContent(place.name, place.icon, place.category, place.address, place.web, place.latitude, place.longitude, place.marker);
-            yelpContentError(place);
+            //yelpContentError(place);
         });
 
     });
