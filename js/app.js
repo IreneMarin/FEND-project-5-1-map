@@ -21,6 +21,7 @@ var Place = function (data) {
     this.marker = null;
 };
 
+// Create the function to get information from the Yelp API, that we will call when we want to create the infoWindow
 var yelpContent = function (name, icon, category, address, web, latitude, longitude, marker) {
 
     // Basic code for the Authentication of the Yelp API, gotten from an example of coach Mark in the Udacity Forums
