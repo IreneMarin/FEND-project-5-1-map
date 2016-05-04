@@ -3,12 +3,20 @@
 // Create global variables used
 var map, infoWindow;
 
-// Create the Google Maps, centered in the neighbourhood and empty
+// Create the Google Maps, centered in the neighbourhood, and call the KO ViewModel
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 41.4029277, lng: 2.157448 },
         zoom: 17
     });
+
+    ko.applyBindings(new ViewModel());
+}
+
+// Create an alert if Google Maps doesn't respond
+function googleError() {
+    alert("Google has crashed. It's the end <i class='fa fa-bomb'></i>");
+    console.log("hola");
 }
 
 // Create a function that will return us a place, with all its characteristics
@@ -61,60 +69,59 @@ var yelpContent = function (name, icon, category, address, web, latitude, longit
         url: yelp_url,
         data: parameters,
         cache: true,
-        dataType: 'jsonp',
-        success: function (results) {
-            // Create a Google Maps InfoWindow object
-
-
-            // Put the information from the place object and from the Yelp API in a variable
-            var content = '<div class="info-window">'
-            // Check if the businesses array from Yelp is empty. 
-            // If not empty, we put the infowindow with the Yelp data. For each Yelp parameter, we also check if it's undefined
-            if (results.businesses.length) {
-                if (results.businesses[0].image_url !== undefined) {
-                    content += '<img class="yelp-image" src="' + results.businesses[0].image_url + '">'
-                }
-                content += '<i class="' + icon + '"></i>&nbsp;'
-                content += '<span class="category">' + category + '</span>'
-                content += '<h3>' + name + '</h3>'
-                if (results.businesses[0].rating_img_url !== undefined) {
-                    content += '<img src="' + results.businesses[0].rating_img_url + '">'
-                }
-                content += '<p>' + address + '</p>'
-                if (web !== '') {
-                    content += '<p><a class="yelp-link" href="' + web + '" target="_blank"><i class="fa fa-globe"></i> Visit website</a>'
-                }
-                if (results.businesses[0].url !== undefined) {
-                    content += '&nbsp;|&nbsp;<a class="yelp-link" href="' + results.businesses[0].url + '" target="_blank"><i class="fa fa-yelp"></i> Visit Yelp site</a></p>'
-                } else {
-                    content += '</p>'
-                }
-                if (results.businesses[0].snippet_text !== undefined) {
-                    content += '<p class="yelp-snippet">' + results.businesses[0].snippet_text + '</p>'
-                }
-            } else {
-                // If Yelp array is empty, we create the infowindow with the basic information from our places.js
-                content += '<i class="' + icon + '"></i>&nbsp;'
-                content += '<span class="category">' + category + '</span>'
-                content += '<h3>' + name + '</h3>'
-                content += '<p>' + address + '</p>'
-                if (web !== '') {
-                    content += '<p><a class="yelp-link" href="' + web + '" target="_blank"><i class="fa fa-globe"></i> Visit website</a></p>'
-                }
-            }
-            content += '</div>';
-
-            // Put the content variable in the infoWindow and open the infoWindow
-            infoWindow.setContent(content);
-            infoWindow.open(map, marker);
-        },
-        error: function () {
-            console.log("We have no Yelp info");
-        }
+        dataType: 'jsonp'
     };
 
     // Send AJAX query via jQuery library.
-    $.ajax(settings);
+    $.ajax(settings).done(function (results) {
+
+        // Put the information from the place object and from the Yelp API in a variable
+        var content = '<div class="info-window">'
+
+        // Check if the businesses array from Yelp is empty. 
+        // If not empty, we put the infowindow with the Yelp data. For each Yelp parameter, we also check if it's undefined
+        if (results.businesses.length) {
+            if (results.businesses[0].image_url !== undefined) {
+                content += '<img class="yelp-image" src="' + results.businesses[0].image_url + '">'
+            }
+            content += '<i class="' + icon + '"></i>&nbsp;'
+            content += '<span class="category">' + category + '</span>'
+            content += '<h3>' + name + '</h3>'
+            if (results.businesses[0].rating_img_url !== undefined) {
+                content += '<img src="' + results.businesses[0].rating_img_url + '">'
+            }
+            content += '<p>' + address + '</p>'
+            if (web !== '') {
+                content += '<p><a class="yelp-link" href="' + web + '" target="_blank"><i class="fa fa-globe"></i> Visit website</a>'
+            }
+            if (results.businesses[0].url !== undefined) {
+                content += '&nbsp;|&nbsp;<a class="yelp-link" href="' + results.businesses[0].url + '" target="_blank"><i class="fa fa-yelp"></i> Visit Yelp site</a></p>'
+            } else {
+                content += '</p>'
+            }
+            if (results.businesses[0].snippet_text !== undefined) {
+                content += '<p class="yelp-snippet">' + results.businesses[0].snippet_text + '</p>'
+            }
+        } else {
+            // If Yelp array is empty, we create the infowindow with the basic information from our places.js
+            content += '<i class="' + icon + '"></i>&nbsp;'
+            content += '<span class="category">' + category + '</span>'
+            content += '<h3>' + name + '</h3>'
+            content += '<p>' + address + '</p>'
+            if (web !== '') {
+                content += '<p><a class="yelp-link" href="' + web + '" target="_blank"><i class="fa fa-globe"></i> Visit website</a></p>'
+            }
+            content += '<p>Yelp has no information for this place.</p>';
+        }
+        content += '</div>';
+
+        // Put the content variable in the infoWindow and open the infoWindow
+        infoWindow.setContent(content);
+        infoWindow.open(map, marker);
+    }).fail(function () {
+        console.log("We have no Yelp info");
+        yelpContentError();
+    });
 };
 
 // Create the KO function, where we will put all the app
@@ -141,6 +148,7 @@ var ViewModel = function () {
             animation: google.maps.Animation.DROP
         });
 
+        // Create a Google Maps InfoWindow object. We will put data later in the Yelp callback
         infoWindow = new google.maps.InfoWindow();
 
         // Add listener onto the marker, to bounce the marker when clicked
@@ -163,7 +171,7 @@ var ViewModel = function () {
             yelpContent(place.name, place.icon, place.category, place.address, place.web, place.latitude, place.longitude, place.marker);
 
             // If the Yelp API gives an error and we get nothing, we create the infoWindow with the basic information only
-            /*if (yelpContentResult === null) {
+            var yelpContentError = function () {
                 // Create a Google Maps InfoWindow object
                 infoWindow = new google.maps.InfoWindow();
 
@@ -180,7 +188,8 @@ var ViewModel = function () {
                 // Put the content variable in the infoWindow and open the infoWindow
                 infoWindow.setContent(content);
                 infoWindow.open(map, marker);
-            }*/
+            }
+
         });
 
     });
@@ -230,6 +239,3 @@ var ViewModel = function () {
         });
     };
 };
-
-initMap();
-ko.applyBindings(new ViewModel());
