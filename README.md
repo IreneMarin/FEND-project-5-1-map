@@ -34,6 +34,7 @@ And the Udacity Discussion Forums, where some useful threads were:
 - [Filtering list of locations with KO](https://discussions.udacity.com/t/filtering-my-list-of-locations-with-ko/38858)
 - [Google Map Marker filter issues](https://discussions.udacity.com/t/google-map-marker-filter-issues/15244)
 - [Implementing search function](https://discussions.udacity.com/t/implementing-the-search-function/42420)
+- [Handling Google Maps in async and fallback](https://discussions.udacity.com/t/handling-google-maps-in-async-and-fallback/34282)
 
 -----------------------------
 
