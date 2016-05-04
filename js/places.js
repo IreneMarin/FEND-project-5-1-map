@@ -1,4 +1,6 @@
 // The Model
+'use strict';
+
 var places = [{
     category: 'restaurant',
     tags: 'restaurants, pizza, italian',

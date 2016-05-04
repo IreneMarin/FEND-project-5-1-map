@@ -14,7 +14,7 @@
     <div class="search-bar">
         <h1>Welcome to La Vila de Gràcia, in Barcelona</h1>
         <input class="search-input" data-bind="textInput: query, event: {keyup: filter}" type="search" placeholder="Where do you want to go?">
-        <a id="right-menu" href="#right-menu"><i class="fa fa-bars"></i></a>
+        <a class="right-menu" id="right-menu" href="#right-menu"><i class="fa fa-bars"></i></a>
     </div>
     <div id="sidr-right">
         <div class="sidebar">
@@ -38,9 +38,8 @@
         </div>
     </div>
 
-    <div id="map"></div>
+    <div id="map" class="map"></div>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAehhDeCoHVsZYrNpNB8Jl0GVX0GZGATho&callback=initMap" onerror="googleError()"></script>
     <script src="js/libs/knockout-3.4.0.min.js"></script>
     <script src="js/libs/jquery-2.2.3.min.js"></script>
     <script src="js/libs/jquery.sidr.min.js"></script>
@@ -55,6 +54,7 @@
             });
         });
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAehhDeCoHVsZYrNpNB8Jl0GVX0GZGATho&callback=initMap" onerror="googleError()"></script>
 </body>
 
 </html>
